@@ -350,13 +350,16 @@ h4 {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 1rem;
 }
 
 .track-card {
     background: white;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .challenge-item {
@@ -370,33 +373,37 @@ h4 {
 .challenge-item h3 {
     color: var(--primary-color);
     margin: 0 0 0.5rem 0;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    word-wrap: break-word;
 }
 
 .challenge-item p {
     color: var(--text-color);
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 1rem;
+    word-wrap: break-word;
 }
 
 .code-examples {
     display: grid;
     gap: 1rem;
     margin-top: 1rem;
+    grid-template-columns: 1fr;
 }
 
 .code-section {
     background: white;
-    padding: 1rem;
+    padding: 0.75rem;
     border-radius: 8px;
     border-left: 4px solid var(--primary-color);
+    overflow-x: auto;
 }
 
 .code-section h4 {
     color: var(--primary-color);
     margin: 0 0 0.5rem 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 pre {
@@ -404,8 +411,10 @@ pre {
     color: #ffffff;
     padding: 0.75rem;
     border-radius: 6px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 code {
@@ -415,14 +424,43 @@ code {
 
 #challengeSolution {
     width: 100%;
-    min-height: 100px;
-    padding: 1rem;
+    min-height: 80px;
+    padding: 0.75rem;
     border: 2px solid #e2e8f0;
     border-radius: 8px;
-    font-family: 'Courier New', monospace;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 0.9rem;
     margin: 0.75rem 0;
     resize: vertical;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    line-height: 1.4;
+    tab-size: 4;
+}
+
+#challengeSolution::placeholder {
+    color: #a0aec0;
+}
+
+.note-card {
+    background: #2d2d2d;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.note-card h3 {
+    color: var(--primary-color);
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.note-content {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    color: #ffffff;
+    white-space: pre-wrap;
+    line-height: 1.4;
+    font-size: 0.9rem;
 }
 
 /* Previous solutions styling */
@@ -535,7 +573,47 @@ code {
 }
 
 @media (min-width: 768px) {
+    .track-card {
+        padding: 1.5rem;
+    }
+
     .code-examples {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .challenge-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .challenge-item p {
+        font-size: 1rem;
+    }
+
+    pre {
+        font-size: 0.9rem;
+    }
+
+    #challengeSolution {
+        min-height: 100px;
+    }
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+    .daily-challenge-section {
+        padding: 0 0.5rem;
+    }
+
+    .track-card {
+        padding: 0.75rem;
+    }
+
+    .code-section {
+        padding: 0.5rem;
+    }
+
+    .save-note-btn {
+        width: 100%;
+        margin: 0.5rem 0;
     }
 }
