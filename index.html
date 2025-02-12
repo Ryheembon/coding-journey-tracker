@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Coding Journey Tracker</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>My Coding Journey</h1>
+        <div class="current-progress">
+            <div class="progress-item completed">
+                <span class="icon">✅</span>
+                <span>IBM Python for Data Science, AI & Development</span>
+            </div>
+            <div class="progress-item enrolled">
+                <span class="icon">🎓</span>
+                <span>Frontend Developer (Coursera)</span>
+            </div>
+            <div class="progress-item in-progress">
+                <span class="icon">📚</span>
+                <span>Wendy Wu Python Course (Day 12)</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="learning-path">
+            <h2>Learning Roadmap</h2>
+            <div class="track-container">
+                <!-- Tracks will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="habits-tracker">
+            <h2>Daily Progress</h2>
+            <div class="habits-grid">
+                <!-- Habits will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="notes-section">
+            <h2>Learning Notes</h2>
+            <div class="notes-container">
+                <div class="notes-input">
+                    <input type="text" id="noteTitle" placeholder="Note Title">
+                    <select id="noteCategory">
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Python">Python</option>
+                        <option value="General">General</option>
+                    </select>
+                    <textarea id="noteContent" placeholder="Write your note here..."></textarea>
+                    <button onclick="saveNote()" class="save-note-btn">Save Note</button>
+                </div>
+                <div class="notes-list">
+                    <!-- Notes will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html> 
