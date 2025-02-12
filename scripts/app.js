@@ -70,6 +70,99 @@ const habits = [
 // Add this to your existing data structures
 const notes = [];
 
+// Simplified challenges
+const challenges = [
+    "Create a function that reverses a string",
+    "Build a simple calculator",
+    "Write a program to find the largest number in an array",
+    "Create a countdown timer",
+    "Build a todo list",
+    "Write a function that checks if a word is a palindrome",
+    "Create a function that converts temperature between Celsius and Fahrenheit",
+    "Build a simple form validator"
+];
+
+// At the top of your file, add these challenges
+const dailyChallenges = [
+    {
+        title: "Day 1: String Reversal",
+        description: "Create a function that reverses a string",
+        javascript: `// JavaScript Solution Example:
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
+
+// Test it:
+console.log(reverseString("hello")); // outputs: "olleh"`,
+        python: `# Python Solution Example:
+def reverse_string(str):
+    return str[::-1]
+
+# Test it:
+print(reverse_string("hello")) # outputs: "olleh"`
+    },
+    {
+        title: "Day 2: Find Largest Number",
+        description: "Write a function that finds the largest number in an array/list",
+        javascript: `// JavaScript Solution Example:
+function findLargest(arr) {
+    return Math.max(...arr);
+}
+
+// Test it:
+console.log(findLargest([1, 5, 2, 9, 3])); // outputs: 9`,
+        python: `# Python Solution Example:
+def find_largest(lst):
+    return max(lst)
+
+# Test it:
+print(find_largest([1, 5, 2, 9, 3])) # outputs: 9`
+    },
+    {
+        title: "Day 3: Palindrome Check",
+        description: "Create a function that checks if a word is a palindrome",
+        javascript: `// JavaScript Solution Example:
+function isPalindrome(str) {
+    str = str.toLowerCase();
+    return str === str.split('').reverse().join('');
+}
+
+// Test it:
+console.log(isPalindrome("racecar")); // outputs: true`,
+        python: `# Python Solution Example:
+def is_palindrome(str):
+    str = str.lower()
+    return str == str[::-1]
+
+# Test it:
+print(is_palindrome("racecar")) # outputs: True`
+    },
+    {
+        title: "Day 4: FizzBuzz",
+        description: "Write a function that prints numbers from 1 to n, but prints 'Fizz' for multiples of 3, 'Buzz' for multiples of 5, and 'FizzBuzz' for multiples of both",
+        javascript: `// JavaScript Solution Example:
+function fizzBuzz(n) {
+    for(let i = 1; i <= n; i++) {
+        if (i % 15 === 0) console.log("FizzBuzz");
+        else if (i % 3 === 0) console.log("Fizz");
+        else if (i % 5 === 0) console.log("Buzz");
+        else console.log(i);
+    }
+}`,
+        python: `# Python Solution Example:
+def fizz_buzz(n):
+    for i in range(1, n + 1):
+        if i % 15 == 0:
+            print("FizzBuzz")
+        elif i % 3 == 0:
+            print("Fizz")
+        elif i % 5 == 0:
+            print("Buzz")
+        else:
+            print(i)`
+    }
+];
+
 // Function to render learning tracks
 function renderTracks() {
     const container = document.querySelector('.track-container');
@@ -212,11 +305,67 @@ function clearNoteForm() {
     document.getElementById('noteCategory').value = 'General';
 }
 
+function getRandomChallenge() {
+    const index = Math.floor(Math.random() * challenges.length);
+    return challenges[index];
+}
+
+function displayChallenge() {
+    console.log("Displaying challenge..."); // Debug log
+    const container = document.getElementById('dailyChallenge');
+    if (container) {
+        container.innerHTML = `
+            <div class="challenge-item">
+                <h3>Today's Challenge:</h3>
+                <p>${getRandomChallenge()}</p>
+            </div>
+        `;
+    } else {
+        console.error("dailyChallenge element not found!"); // Debug log
+    }
+}
+
+function saveSolution() {
+    const solution = document.getElementById('challengeSolution').value;
+    const date = new Date().toLocaleDateString();
+    
+    if (!solution.trim()) {
+        alert('Please write your solution before saving!');
+        return;
+    }
+
+    const solutionObj = {
+        date: date,
+        solution: solution
+    };
+
+    // Get existing solutions or initialize empty array
+    const solutions = JSON.parse(localStorage.getItem('solutions') || '[]');
+    solutions.unshift(solutionObj); // Add new solution at the beginning
+    localStorage.setItem('solutions', JSON.stringify(solutions));
+
+    displayPreviousSolutions();
+    document.getElementById('challengeSolution').value = ''; // Clear input
+}
+
+function displayPreviousSolutions() {
+    const container = document.getElementById('previousSolutions');
+    const solutions = JSON.parse(localStorage.getItem('solutions') || '[]');
+    
+    container.innerHTML = solutions.map(sol => `
+        <div class="note-card">
+            <h3>Solution - ${sol.date}</h3>
+            <div class="note-content">${sol.solution}</div>
+        </div>
+    `).join('');
+}
+
 // Update your existing saveToLocalStorage function
 function saveToLocalStorage() {
     localStorage.setItem('tracks', JSON.stringify(tracks));
     localStorage.setItem('habits', JSON.stringify(habits));
     localStorage.setItem('notes', JSON.stringify(notes));
+    // Daily challenges are saved separately in saveSolution function
 }
 
 // Update your existing loadFromLocalStorage function
@@ -230,10 +379,47 @@ function loadFromLocalStorage() {
     if (savedNotes) notes.push(...JSON.parse(savedNotes));
 }
 
-// Update your initialization code
+// Update the initialization code at the bottom of app.js
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("Page loaded"); // Debug log
     loadFromLocalStorage();
     renderTracks();
     renderHabits();
     renderNotes();
-}); 
+    displayChallenge();
+    displayPreviousSolutions();
+});
+
+// Add this function to display today's challenge
+function displayDailyChallenge() {
+    const today = new Date().getDate();
+    const challengeIndex = (today % dailyChallenges.length);
+    const challenge = dailyChallenges[challengeIndex];
+
+    const challengeContainer = document.getElementById('dailyChallenge');
+    if (challengeContainer) {
+        challengeContainer.innerHTML = `
+            <div class="challenge-item">
+                <h3>${challenge.title}</h3>
+                <p>${challenge.description}</p>
+                
+                <div class="code-examples">
+                    <div class="code-section">
+                        <h4>JavaScript Example:</h4>
+                        <pre><code class="javascript">${challenge.javascript}</code></pre>
+                    </div>
+                    
+                    <div class="code-section">
+                        <h4>Python Example:</h4>
+                        <pre><code class="python">${challenge.python}</code></pre>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+}
+
+// Make sure this is at the very bottom of your app.js file
+window.onload = function() {
+    displayDailyChallenge();
+}; 

@@ -1,6 +1,42 @@
 # Coding Journey Tracker
 
-A personal dashboard to track my progress in becoming a developer, focusing on Python and Web Development.
+A personal dashboard web application to track learning progress, daily habits, and notes for programming studies.
+
+## Features
+
+- **Current Progress Tracking**
+  - ✅ Completed courses
+  - 🎓 Enrolled courses
+  - 📚 In-progress courses
+
+- **Learning Roadmap**
+  - Organized learning paths
+  - Track-based progress visualization
+  - Dynamic content loading via JavaScript
+
+- **Daily Progress**
+  - Habits tracking grid
+  - Visual progress indicators
+  - Daily activity logging
+
+- **Learning Notes System**
+  - Categorized note-taking
+  - Multiple programming categories:
+    - HTML
+    - CSS
+    - JavaScript
+    - Python
+    - General
+  - Save and retrieve functionality
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
+- Local Storage for data persistence
+
+## Project Structure
 
 ## Current Progress
 - ✅ Completed: IBM Python for Data Science, AI & Development

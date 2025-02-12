@@ -26,6 +26,20 @@
     </header>
 
     <main>
+        <section class="daily-challenge-section">
+            <h2>Daily Coding Challenge</h2>
+            <div class="track-card">
+                <div id="dailyChallenge"></div>
+                <textarea 
+                    id="challengeSolution" 
+                    class="notes-input textarea" 
+                    placeholder="Write your solution here..."
+                ></textarea>
+                <button onclick="saveSolution()" class="save-note-btn">Save Solution</button>
+                <div id="previousSolutions"></div>
+            </div>
+        </section>
+
         <section class="learning-path">
             <h2>Learning Roadmap</h2>
             <div class="track-container">
