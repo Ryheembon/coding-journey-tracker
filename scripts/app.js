@@ -82,93 +82,186 @@ const challenges = [
     "Build a simple form validator"
 ];
 
-// At the top of your file, add these challenges
+// Challenges array
 const dailyChallenges = [
     {
-        title: "Day 1: String Reversal",
-        description: "Create a function that reverses a string",
+        title: "Day 1: Secret Message Encoder",
+        description: "Create a function that converts a message into a secret code by shifting each letter by 3 positions in the alphabet (e.g., 'a' becomes 'd', 'b' becomes 'e', etc.)",
         javascript: `// JavaScript Solution Example:
-function reverseString(str) {
-    return str.split('').reverse().join('');
+function encodeMessage(message) {
+    return message
+        .toLowerCase()
+        .split('')
+        .map(char => {
+            if (char.match(/[a-z]/)) {
+                let code = char.charCodeAt(0) + 3;
+                if (code > 122) code -= 26;
+                return String.fromCharCode(code);
+            }
+            return char;
+        })
+        .join('');
 }
 
 // Test it:
-console.log(reverseString("hello")); // outputs: "olleh"`,
+console.log(encodeMessage("hello")); // outputs: "khoor"`,
         python: `# Python Solution Example:
-def reverse_string(str):
-    return str[::-1]
-
-# Test it:
-print(reverse_string("hello")) # outputs: "olleh"`
-    },
-    {
-        title: "Day 2: Find Largest Number",
-        description: "Write a function that finds the largest number in an array/list",
-        javascript: `// JavaScript Solution Example:
-function findLargest(arr) {
-    return Math.max(...arr);
-}
-
-// Test it:
-console.log(findLargest([1, 5, 2, 9, 3])); // outputs: 9`,
-        python: `# Python Solution Example:
-def find_largest(lst):
-    return max(lst)
-
-# Test it:
-print(find_largest([1, 5, 2, 9, 3])) # outputs: 9`
-    },
-    {
-        title: "Day 3: Palindrome Check",
-        description: "Create a function that checks if a word is a palindrome",
-        javascript: `// JavaScript Solution Example:
-function isPalindrome(str) {
-    str = str.toLowerCase();
-    return str === str.split('').reverse().join('');
-}
-
-// Test it:
-console.log(isPalindrome("racecar")); // outputs: true`,
-        python: `# Python Solution Example:
-def is_palindrome(str):
-    str = str.lower()
-    return str == str[::-1]
-
-# Test it:
-print(is_palindrome("racecar")) # outputs: True`
-    },
-    {
-        title: "Day 4: FizzBuzz",
-        description: "Write a function that prints numbers from 1 to n, but prints 'Fizz' for multiples of 3, 'Buzz' for multiples of 5, and 'FizzBuzz' for multiples of both",
-        javascript: `// JavaScript Solution Example:
-function fizzBuzz(n) {
-    for(let i = 1; i <= n; i++) {
-        if (i % 15 === 0) console.log("FizzBuzz");
-        else if (i % 3 === 0) console.log("Fizz");
-        else if (i % 5 === 0) console.log("Buzz");
-        else console.log(i);
-    }
-}`,
-        python: `# Python Solution Example:
-def fizz_buzz(n):
-    for i in range(1, n + 1):
-        if i % 15 == 0:
-            print("FizzBuzz")
-        elif i % 3 == 0:
-            print("Fizz")
-        elif i % 5 == 0:
-            print("Buzz")
+def encode_message(message):
+    result = ""
+    for char in message.lower():
+        if char.isalpha():
+            code = ord(char) + 3
+            if code > ord('z'):
+                code -= 26
+            result += chr(code)
         else:
-            print(i)`
+            result += char
+    return result
+
+# Test it:
+print(encode_message("hello")) # outputs: "khoor"`
+    },
+    {
+        title: "Day 2: Emoji Translator",
+        description: "Create a function that converts simple words into emoji. For example: 'smile' → '😊', 'heart' → '❤️', 'cat' → '🐱'",
+        javascript: `// JavaScript Solution Example:
+const emojiDict = {
+    'smile': '😊',
+    'heart': '❤️',
+    'cat': '🐱',
+    'dog': '🐶',
+    'star': '⭐'
+};
+
+function translateToEmoji(text) {
+    return text
+        .toLowerCase()
+        .split(' ')
+        .map(word => emojiDict[word] || word)
+        .join(' ');
+}
+
+// Test it:
+console.log(translateToEmoji("I heart cat")); // outputs: "I ❤️ 🐱"`,
+        python: `# Python Solution Example:
+emoji_dict = {
+    'smile': '😊',
+    'heart': '❤️',
+    'cat': '🐱',
+    'dog': '🐶',
+    'star': '⭐'
+}
+
+def translate_to_emoji(text):
+    return ' '.join(emoji_dict.get(word, word) 
+                   for word in text.lower().split())
+
+# Test it:
+print(translate_to_emoji("I heart cat")) # outputs: "I ❤️ 🐱"`
+    },
+    {
+        title: "Day 3: Password Generator",
+        description: "Create a function that generates a random password with at least one uppercase letter, one lowercase letter, one number, and one special character",
+        javascript: `// JavaScript Solution Example:
+function generatePassword(length = 12) {
+    const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lower = 'abcdefghijklmnopqrstuvwxyz';
+    const numbers = '0123456789';
+    const special = '!@#$%^&*';
+    
+    let password = '';
+    password += upper[Math.floor(Math.random() * upper.length)];
+    password += lower[Math.floor(Math.random() * lower.length)];
+    password += numbers[Math.floor(Math.random() * numbers.length)];
+    password += special[Math.floor(Math.random() * special.length)];
+    
+    const allChars = upper + lower + numbers + special;
+    for(let i = password.length; i < length; i++) {
+        password += allChars[Math.floor(Math.random() * allChars.length)];
+    }
+    
+    return password.split('').sort(() => Math.random() - 0.5).join('');
+}
+
+// Test it:
+console.log(generatePassword()); // outputs: random secure password`,
+        python: `# Python Solution Example:
+import random
+import string
+
+def generate_password(length=12):
+    upper = string.ascii_uppercase
+    lower = string.ascii_lowercase
+    numbers = string.digits
+    special = '!@#$%^&*'
+    
+    password = [
+        random.choice(upper),
+        random.choice(lower),
+        random.choice(numbers),
+        random.choice(special)
+    ]
+    
+    all_chars = upper + lower + numbers + special
+    password.extend(random.choice(all_chars) 
+                   for _ in range(length - 4))
+    
+    random.shuffle(password)
+    return ''.join(password)
+
+# Test it:
+print(generate_password()) # outputs: random secure password`
+    },
+    {
+        title: "Day 4: Color Mixer",
+        description: "Create a function that takes two colors (red, blue, or yellow) and returns the color you get when mixing them (e.g., 'red' + 'blue' = 'purple')",
+        javascript: `// JavaScript Solution Example:
+function mixColors(color1, color2) {
+    const colors = [color1, color2].sort().join('-');
+    const mixtures = {
+        'blue-red': 'purple',
+        'blue-yellow': 'green',
+        'red-yellow': 'orange',
+        'blue-blue': 'blue',
+        'red-red': 'red',
+        'yellow-yellow': 'yellow'
+    };
+    return mixtures[colors] || "Invalid color combination";
+}
+
+// Test it:
+console.log(mixColors("red", "blue")); // outputs: "purple"
+console.log(mixColors("blue", "yellow")); // outputs: "green"`,
+        python: `# Python Solution Example:
+def mix_colors(color1, color2):
+    colors = '-'.join(sorted([color1, color2]))
+    mixtures = {
+        'blue-red': 'purple',
+        'blue-yellow': 'green',
+        'red-yellow': 'orange',
+        'blue-blue': 'blue',
+        'red-red': 'red',
+        'yellow-yellow': 'yellow'
+    }
+    return mixtures.get(colors, "Invalid color combination")
+
+# Test it:
+print(mix_colors("red", "blue"))    # outputs: "purple"
+print(mix_colors("blue", "yellow")) # outputs: "green"`
     }
 ];
 
 // Function to render learning tracks
 function renderTracks() {
     const container = document.querySelector('.track-container');
-    container.innerHTML = ''; // Clear existing content
+    container.innerHTML = ''; // Clear existing content before adding new tracks
+    
+    // Only render each track once
+    const uniqueTracks = [...new Set(tracks.map(track => track.title))].map(title => 
+        tracks.find(track => track.title === title)
+    );
 
-    tracks.forEach(track => {
+    uniqueTracks.forEach(track => {
         const trackElement = document.createElement('div');
         trackElement.className = 'track-card';
         trackElement.innerHTML = `
@@ -381,16 +474,12 @@ function loadFromLocalStorage() {
 
 // Update the initialization code at the bottom of app.js
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Page loaded"); // Debug log
-    loadFromLocalStorage();
-    renderTracks();
-    renderHabits();
-    renderNotes();
-    displayChallenge();
-    displayPreviousSolutions();
+    displayDailyChallenge();  // Display the challenge
+    renderTracks();           // Render tracks only once
+    renderHabits();          // Render habits
+    renderNotes();           // Render notes
 });
 
-// Add this function to display today's challenge
 function displayDailyChallenge() {
     const today = new Date().getDate();
     const challengeIndex = (today % dailyChallenges.length);
@@ -417,9 +506,4 @@ function displayDailyChallenge() {
             </div>
         `;
     }
-}
-
-// Make sure this is at the very bottom of your app.js file
-window.onload = function() {
-    displayDailyChallenge();
-}; 
+} 
