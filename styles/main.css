@@ -74,10 +74,10 @@ main {
 }
 
 .track-card {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-sm);
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: var(--transition);
 }
 
@@ -346,47 +346,83 @@ h4 {
 
 /* Daily Challenge Section Styles */
 .daily-challenge-section {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.track-card {
     background: white;
-    padding: 2rem;
-    border-radius: 12px;
+    padding: 1.5rem;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.challenge-content {
-    background: var(--background-color);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 1.5rem;
-    border-left: 4px solid var(--primary-color);
-    font-size: 1.1rem;
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-.challenge-content:hover {
-    background: linear-gradient(to right, var(--background-color), white);
-}
-
-/* Style for the solution textarea */
-.notes-input.textarea {
-    width: 100%;
-    min-height: 200px;
+.challenge-item {
+    background: #f8fafc;
     padding: 1rem;
-    border: 2px solid #e2e8f0;
-    border-radius: var(--border-radius);
-    font-family: 'Courier New', monospace;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.challenge-item h3 {
+    color: var(--primary-color);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.challenge-item p {
+    color: var(--text-color);
     font-size: 1rem;
-    line-height: 1.6;
-    background: white;
-    resize: vertical;
+    line-height: 1.5;
     margin-bottom: 1rem;
 }
 
-.notes-input.textarea:focus {
-    outline: none;
-    border-color: var(--primary-light);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+.code-examples {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.code-section {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.code-section h4 {
+    color: var(--primary-color);
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+pre {
+    background: #2d2d2d;
+    color: #ffffff;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    line-height: 1.4;
+}
+
+#challengeSolution {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    margin: 0.75rem 0;
+    resize: vertical;
 }
 
 /* Previous solutions styling */
@@ -466,35 +502,15 @@ h4 {
     gap: 1rem;
 }
 
-.challenge-item {
-    background: #f8fafc;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid var(--primary-color);
-}
-
-.challenge-item h3 {
-    color: var(--primary-color);
-    margin: 0 0 1rem 0;
-    font-size: 1.25rem;
-}
-
-.challenge-item p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
 .code-examples {
     display: grid;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .code-section {
     background: white;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 8px;
     border-left: 4px solid var(--primary-color);
 }
@@ -506,9 +522,9 @@ h4 {
 
 pre {
     background: #2d2d2d;
-    color: white;
-    padding: 1rem;
+    padding: 0.75rem;
     border-radius: 6px;
+    font-size: 0.9rem;
     overflow-x: auto;
 }
 
@@ -522,22 +538,4 @@ code {
     .code-examples {
         grid-template-columns: 1fr 1fr;
     }
-}
-
-#challengeSolution {
-    width: 100%;
-    min-height: 150px;
-    padding: 1rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    margin: 1rem 0;
-    resize: vertical;
-}
-
-#challengeSolution:focus {
-    outline: none;
-    border-color: var(--primary-light);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
