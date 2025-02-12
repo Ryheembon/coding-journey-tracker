@@ -1,40 +1,44 @@
 # Coding Journey Tracker
 
-A personal dashboard web application to track learning progress, daily habits, and notes for programming studies.
+A personal website to track daily coding challenges and learning progress in both Python and JavaScript.
 
 ## Features
 
-- **Current Progress Tracking**
-  - ✅ Completed courses
-  - 🎓 Enrolled courses
-  - 📚 In-progress courses
+### 🎯 Daily Coding Challenges
+- New challenge every day
+- Examples in both Python and JavaScript
+- Code editor-style solution input
+- Save and track your solutions
 
-- **Learning Roadmap**
-  - Organized learning paths
-  - Track-based progress visualization
-  - Dynamic content loading via JavaScript
+### Current Challenges Include:
+1. Secret Message Encoder
+2. Emoji Translator
+3. Password Generator
+4. Color Mixer
 
-- **Daily Progress**
-  - Habits tracking grid
-  - Visual progress indicators
-  - Daily activity logging
+### 💻 Code Editor Features
+- Dark theme code input
+- Syntax-friendly monospace font
+- Saved solutions in code format
+- Mobile-responsive design
 
-- **Learning Notes System**
-  - Categorized note-taking
-  - Multiple programming categories:
-    - HTML
-    - CSS
-    - JavaScript
-    - Python
-    - General
-  - Save and retrieve functionality
+## How to Use
 
-## Technologies Used
+1. **Daily Challenge**
+   - View today's coding challenge
+   - Read the problem description
+   - Check example solutions in Python and JavaScript
+   - Write your solution in the code editor
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
-- Local Storage for data persistence
+2. **Saving Solutions**
+   - Type your solution in the dark code editor
+   - Click "Save Solution" to store it
+   - View your saved solutions below with timestamps
+
+3. **Learning Progress**
+   - Track completed courses
+   - Monitor daily coding habits
+   - Save learning notes
 
 ## Project Structure
 

@@ -179,12 +179,11 @@ main {
 }
 
 .note-card {
-    background-color: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
     border-left: 4px solid var(--primary-color);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
 }
 
 .note-card:hover {
@@ -193,9 +192,12 @@ main {
 }
 
 .note-card h3 {
-    margin: 0;
     color: var(--primary-color);
-    font-size: 1.25rem;
+    margin: 0 0 0.75rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+    background: white;
 }
 
 .note-card .note-meta {
@@ -207,10 +209,18 @@ main {
     align-items: center;
 }
 
-.note-card .note-content {
+.note-content {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    color: #00ff00;
     white-space: pre-wrap;
-    color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.4;
+    font-size: 0.9rem;
+    background: #000000;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .note-actions {
@@ -426,46 +436,25 @@ code {
     width: 100%;
     min-height: 80px;
     padding: 0.75rem;
-    border: 2px solid #e2e8f0;
+    border: 2px solid #000000;
     border-radius: 8px;
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 0.9rem;
     margin: 0.75rem 0;
     resize: vertical;
-    background-color: #2d2d2d;
-    color: #ffffff;
+    background-color: #000000;
+    color: #00ff00;
     line-height: 1.4;
     tab-size: 4;
 }
 
 #challengeSolution::placeholder {
-    color: #a0aec0;
-}
-
-.note-card {
-    background: #2d2d2d;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
-
-.note-card h3 {
-    color: var(--primary-color);
-    margin: 0 0 0.5rem 0;
-    font-size: 1rem;
-}
-
-.note-content {
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    color: #ffffff;
-    white-space: pre-wrap;
-    line-height: 1.4;
-    font-size: 0.9rem;
+    color: #666666;
 }
 
 /* Previous solutions styling */
 #previousSolutions {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 #previousSolutions .note-card {
@@ -495,7 +484,8 @@ code {
 }
 
 #previousSolutions .note-content {
-    background: var(--background-color);
+    background: #000000;
+    color: #00ff00;
     padding: 1rem;
     border-radius: var(--border-radius);
     font-family: 'Courier New', monospace;
