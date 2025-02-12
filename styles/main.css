@@ -191,13 +191,34 @@ main {
     box-shadow: var(--shadow-md);
 }
 
-.note-card h3 {
-    color: var(--primary-color);
-    margin: 0 0 0.75rem 0;
-    font-size: 1rem;
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
     border-bottom: 1px solid #e2e8f0;
     padding-bottom: 0.5rem;
-    background: white;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.note-card h3 {
+    margin: 0;  /* Remove margin since it's now handled by note-header */
+    color: var(--primary-color);
+    font-size: 1rem;
 }
 
 .note-card .note-meta {

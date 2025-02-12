@@ -445,12 +445,27 @@ function displayPreviousSolutions() {
     const container = document.getElementById('previousSolutions');
     const solutions = JSON.parse(localStorage.getItem('solutions') || '[]');
     
-    container.innerHTML = solutions.map(sol => `
+    container.innerHTML = solutions.map((sol, index) => `
         <div class="note-card">
-            <h3>Solution - ${sol.date}</h3>
+            <div class="note-header">
+                <h3>Solution - ${sol.date}</h3>
+                <button class="delete-btn" onclick="deleteSolution(${index})">
+                    ✕
+                </button>
+            </div>
             <div class="note-content">${sol.solution}</div>
         </div>
     `).join('');
+}
+
+// Add the delete function
+function deleteSolution(index) {
+    if (confirm('Are you sure you want to delete this solution?')) {
+        const solutions = JSON.parse(localStorage.getItem('solutions') || '[]');
+        solutions.splice(index, 1);
+        localStorage.setItem('solutions', JSON.stringify(solutions));
+        displayPreviousSolutions();
+    }
 }
 
 // Update your existing saveToLocalStorage function
